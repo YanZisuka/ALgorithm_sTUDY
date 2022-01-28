@@ -79,6 +79,8 @@ $ git commit -m '[BOJ] 고양이 / 브론즈5 / 1분' -m 'https://www.acmicpc.ne
 -   **1주차(01-24 ~ 01-29)** (함수/재귀) - [정수 N개의 합](https://www.acmicpc.net/problem/15596), [셀프 넘버](https://www.acmicpc.net/problem/4673), [한수](https://www.acmicpc.net/problem/1065), [팩토리얼](https://www.acmicpc.net/problem/10872), [피보나치 수 5](https://www.acmicpc.net/problem/10870), [별 찍기 - 10](https://www.acmicpc.net/problem/2447), [하노이 탑 이동 순서](https://www.acmicpc.net/problem/11729)
 -   **2주차(01-31 ~ 02-05)** (완전탐색&백트래킹) - [차이를최대로(기본)](https://www.acmicpc.net/problem/10819), [블랙잭(응용)](https://www.acmicpc.net/problem/2798), [사다리조작(심화)](https://www.acmicpc.net/problem/15684)
 -   **3주차(02-07 ~ 02-12)** (완전탐색&백트래킹) - [좋은수열(응용)](https://www.acmicpc.net/problem/2661), [연산자끼워넣기(응용)](https://www.acmicpc.net/problem/14888), [스타트와 링크(응용)](https://www.acmicpc.net/problem/14889), [치킨배달(심화)](https://www.acmicpc.net/problem/15686)
--   **4주차(02-14 ~ 02-19)** (bfs) - [단지번호 붙이기(기본)](https://www.acmicpc.net/problem/2667), [연구소(응용)](https://www.acmicpc.net/problem/14502), [다리만들기(응용)](https://www.acmicpc.net/problem/2146)
--   **5주차(02-21 ~ 02-26)** (bfs) - [미로 탐색(기본)](https://www.acmicpc.net/problem/2178), [아기상어(응용)](https://www.acmicpc.net/problem/16236), [치즈(응용)](https://www.acmicpc.net/problem/2638)
--   *to be continue...*
+-   **4주차(02-14 ~ 02-19)** (BFS) - [단지번호 붙이기(기본)](https://www.acmicpc.net/problem/2667), [연구소(응용)](https://www.acmicpc.net/problem/14502), [다리만들기(응용)](https://www.acmicpc.net/problem/2146)
+-   **5주차(02-21 ~ 02-26)** (BFS) - [미로 탐색(기본)](https://www.acmicpc.net/problem/2178), [아기상어(응용)](https://www.acmicpc.net/problem/16236), [치즈(응용)](https://www.acmicpc.net/problem/2638)
+-   **6주차(02-28 ~ 03.05)** (DFS) - [단지번호 붙이기(기본) *dfs로 풀어보기*](https://www.acmicpc.net/problem/2667), [안전영역(응용)](https://www.acmicpc.net/problem/2468), [알파벳(응용)](https://www.acmicpc.net/problem/1987), [양구출작전(응용)](https://www.acmicpc.net/problem/16437)
+-   **7주차(03-07 ~ 03-12)** (DFS&구간합) - [적록색약(응용)](https://www.acmicpc.net/problem/10026), [구간합구하기5](https://www.acmicpc.net/problem/11660), [개똥벌레](https://www.acmicpc.net/problem/3020), [소형기관차](https://www.acmicpc.net/problem/2616)
+-   *to be continued...*
