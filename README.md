@@ -1,4 +1,4 @@
-<center><img src="README.assets/image-20220128202728178.png"></center>
+![logo](README.assets/image-20220128203820446.png)
 
 # 💯ALgorithm_sTUDY
 
