@@ -1,4 +1,4 @@
-![image-20220128202728178](README.assets/image-20220128202728178.png)
+<center><img src="README.assets/image-20220128202728178.png"></center>
 
 # 💯ALgorithm_sTUDY
 
