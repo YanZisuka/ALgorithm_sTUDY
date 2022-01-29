@@ -1,6 +1,3 @@
-from unittest.mock import patch
-
-
 def stars(n):
     if n == 3:
         return ['***','* *','***']
