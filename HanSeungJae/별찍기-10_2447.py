@@ -1,7 +1,7 @@
 import sys
 input = sys.stdin.readline
 
-# def stars(n):  # 완벽하게 재귀로만 구성했지만 시간복잡도가 O(n^2) 이상이므로 백준에 채점하면 시간초과가 뜬다 ㅠㅠ
+# def stars(n):  # 완벽하게 재귀로만 구성했지만 시간복잡도가 O(2^n) 이상이므로 백준에 채점하면 시간초과가 뜬다 ㅠㅠ
 #     if n == 3:
 #         return ['***','* *','***']
 #     else:
