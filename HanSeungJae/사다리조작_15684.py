@@ -1,44 +1,48 @@
-def ladder_game(n, m, h):
-    links = []
-    ns = []
-    hs = []
-    n_cnt = 0
-    h_cnt = 0
-    m_cnt = 0
+import sys
+input = sys.stdin.readline
 
-    for _ in range(m):
-        link = list(map(int, input().split()))
-        links.append(link)
-
-    for i in range(len(links)):
-        hs.append(links[i][0])
-        ns.append(links[i][1])
-
-        if links[i][1] == links[i-1][1]+1:
-            m_cnt += 1
-
-    for i in range(1, n):
-        if ns.count(i) % 2:
-            n_cnt += 1
-
-    if n_cnt > 3:
-        return -1
-    
-    for i in range(1, h+1):
-        if hs.count(i) >= n//2:
-            h_cnt += 1
-
-    if (h-h_cnt) < n_cnt:
-        return -1
-
-    if m_cnt > h//2:
-        return -1
+def check():
+    for start in range(n):
+        k = start
+        for j in range(h):
+            if ladders[j][k]:
+                k += 1
+            elif k > 0 and ladders[j][k - 1]:
+                k -= 1
+        if k != start: return False
+    return True
 
 
-    return n_cnt
+def dfs(cnt, x, y):
+    global ans
+    if check():
+        ans = min(ans, cnt)
+        return
+    elif cnt == 3 or ans <= cnt:
+        return
 
-    
+    for i in range(x, h):  # 가로로 탐색
+        if i == x:
+            k = y
+        else:
+            k = 0
+        for j in range(k, n - 1):  # 세로로 탐색
+            if not ladders[i][j] and not ladders[i][j+1]:
+                if j > 0 and ladders[i][j - 1]:
+                    continue
+                ladders[i][j] = True
+                dfs(cnt + 1, i, j + 2)  # 가로선 연속하지 않기 위해 세로선 2 증가
+                ladders[i][j] = False
 
 n, m, h = map(int, input().split())
+ladders = [[False] * n for _ in range(h)]
+if m == 0:
+    print(0)
+    exit(0)
 
-print(ladder_game(n, m, h))
+for _ in range(m):
+    a, b = map(int, input().split())
+    ladders[a - 1][b - 1] = True
+ans = 4
+dfs(0, 0, 0)
+print(ans if ans < 4 else -1)
