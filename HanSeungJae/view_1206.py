@@ -1,3 +1,4 @@
+
 def my_max(*args):
     list_ = list(map(int, *args))
     max_ = list_[0]
