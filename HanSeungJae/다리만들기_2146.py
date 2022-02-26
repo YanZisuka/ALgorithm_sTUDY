@@ -9,6 +9,7 @@ def numbering_bfs(a, b):
     global island_num
     queue = deque()
     queue.append((a, b))
+    graph[a][b] = island_num
 
     while queue:
         i, j = queue.popleft()
