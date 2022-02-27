@@ -2,6 +2,7 @@ from collections import deque
 def bfs(start_x,start_y,baby):
     global fish
     global eat
+
     queue = deque()
     queue.append([start_x,start_y])
     visited = [[0] * N for _ in range(N)]
@@ -9,7 +10,6 @@ def bfs(start_x,start_y,baby):
     mat[start_x][start_y] = 0
     count = [[0]*N for _ in range(N)]
     eat = []
-
 
     while queue:
         x, y = queue.popleft()
@@ -25,7 +25,6 @@ def bfs(start_x,start_y,baby):
                     count[nx][ny] = count[x][y] + 1  # 시작점으로 부터 이동 거리 카운트
                     if mat[nx][ny] < baby and mat[nx][ny] != 0: # 도착하면, 카운트한 이동 거리 반환
                         eat.append([nx,ny,count[nx][ny]])
-                        mat[nx][ny] = 0
 
     return eat
 
@@ -39,8 +38,8 @@ dy = [0, -1, 1, 0]
 result = 0
 baby = 2
 fish = 0
-eat_list = []
 fishlist = []
+
 def find(mat):
     global row
     global col
@@ -48,32 +47,22 @@ def find(mat):
         for col in range(N):
             if mat[row][col] == 9:
                 return row,col
-def can(mat):
-    global fishlist
-    for row in range(N):
-        for col in range(N):
-            if mat[row][col] < baby and mat[row][col] != 0:
-                fishlist.append(mat[row][col])
-                return fishlist
 
-can(mat)
-print(fishlist)
-while fishlist:
-    while 1:
-        find(mat)
-        bfs(row,col,baby)
-        min_eat = sorted(eat,key=lambda x:x[2])
-        eat_list.append(min_eat)
-        print(min_eat)
-        if eat:
-            mat[min_eat[0][0]][min_eat[0][1]] = 9
-            print(mat)
-            result += min_eat[0][2]
-            fish += 1
-            if baby == fish:
-                baby+=1
-                fish = 0
-        else:
-            break
-    fishlist =[]
-    can(mat)
+while 1:
+    find(mat)
+    bfs(row,col,baby)
+    min_eat = sorted(eat,key=lambda x:(x[2],x[0],x[1]))
+    if eat:
+        mat[min_eat[0][0]][min_eat[0][1]] = 9
+        mat[row][col] = 0
+        fish += 1
+        result += min_eat[0][2]
+        if baby == fish:
+            baby+=1
+            fish = 0
+    else:
+        break
+
+fishlist =[]
+
+print(result)
