@@ -1,4 +1,5 @@
 from collections import deque
+
 def bfs(start_x,start_y,baby):
     global fish
     global eat
@@ -10,7 +11,6 @@ def bfs(start_x,start_y,baby):
     count = [[0]*N for _ in range(N)]
     eat = []
 
-
     while queue:
         x, y = queue.popleft()
 
@@ -20,12 +20,11 @@ def bfs(start_x,start_y,baby):
 
             if 0 <= nx < N and 0 <= ny < N:
                 if mat[nx][ny] <= baby and visited[nx][ny] == 0:
-                    queue.append([nx, ny])  # 방문 예정 리스트 추가
+                    queue.append([nx, ny])
                     visited[nx][ny] = 1  # 방문처리
                     count[nx][ny] = count[x][y] + 1  # 시작점으로 부터 이동 거리 카운트
-                    if mat[nx][ny] < baby and mat[nx][ny] != 0: # 도착하면, 카운트한 이동 거리 반환
-                        eat.append([nx,ny,count[nx][ny]])
-                        mat[nx][ny] = 0
+                    if mat[nx][ny] < baby and mat[nx][ny] != 0:
+                        eat.append([nx,ny,count[nx][ny]]) # 먹을 수 있는 물고기 위치, 거리 모두 리스트에 추가
 
     return eat
 
@@ -37,43 +36,30 @@ dx = [-1, 0, 0, 1]
 dy = [0, -1, 1, 0]
 
 result = 0
-baby = 2
-fish = 0
-eat_list = []
-fishlist = []
-def find(mat):
+baby = 2  # 현재 상어 크기
+fish = 0  # 지금까지 먹은 물고기 수
+
+def find(mat):  # 상어 현재 위치 찾는 함수
     global row
     global col
     for row in range(N):
         for col in range(N):
             if mat[row][col] == 9:
                 return row,col
-def can(mat):
-    global fishlist
-    for row in range(N):
-        for col in range(N):
-            if mat[row][col] < baby and mat[row][col] != 0:
-                fishlist.append(mat[row][col])
-                return fishlist
 
-can(mat)
-print(fishlist)
-while fishlist:
-    while 1:
-        find(mat)
-        bfs(row,col,baby)
-        min_eat = sorted(eat,key=lambda x:x[2])
-        eat_list.append(min_eat)
-        print(min_eat)
-        if eat:
-            mat[min_eat[0][0]][min_eat[0][1]] = 9
-            print(mat)
-            result += min_eat[0][2]
-            fish += 1
-            if baby == fish:
-                baby+=1
-                fish = 0
-        else:
-            break
-    fishlist =[]
-    can(mat)
+while 1:
+    find(mat)
+    bfs(row,col,baby)
+    min_eat = sorted(eat,key=lambda x:(x[2],x[0],x[1])) # 가까운순, 가장 위쪽, 가장 왼쪽 순서로 정렬
+    if eat:  # 먹을 수 있는 물고기가 있으면
+        mat[min_eat[0][0]][min_eat[0][1]] = 9  # 정렬 결과 중 가장 앞의 물고기 먹고 이동
+        mat[row][col] = 0  # 원래 상어가 있던 자리는 0
+        fish += 1  # 지금까지 먹은 물고기 +1
+        result += min_eat[0][2]  # 지금까지 이동한 거리 (=시간)
+        if baby == fish:  # 자기 크기만큼 먹으면, 자기 크기 +1
+            baby+=1
+            fish = 0
+    else:  # 먹을 수 있는 물고기 없으면 끝
+        break
+
+print(result)
