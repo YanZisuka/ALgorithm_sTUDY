@@ -16,10 +16,6 @@ def dfs(start_list):
             print(result_list)
 
 
-
-
-
-
 N = int(input())
 information = []
 for i in range(2,N+1):
