@@ -1,22 +1,25 @@
 import sys
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(10**8)
+input = sys.stdin.readline
 
-def dfs(i, w):
+def dfs(i):
     visited[i] = True
-
-    if graph[i][0] == 'S':
-        if graph[i][1]-w >= 0:
-            graph[1][1] += graph[i][1]-w
-            w = 0
-        else:
-            w -= graph[i][1]
-    elif graph[i][0] == 'W':
-        w += graph[i][1]
-
+    s = 0
 
     for next in graph[i][2]:
         if not visited[next]:
-            dfs(next, w)
+            s += dfs(next)
+
+    if graph[i][0] == 'S':
+        s += graph[i][1]
+
+    elif graph[i][0] == 'W':
+        s -= graph[i][1]
+    
+    if s <= 0:
+        s = 0
+    
+    return s
 
 
 n = int(input())
@@ -29,12 +32,12 @@ i = 2
 while i <= n:
     island = input().split()
     island[1] = int(island[1])
-    island[2] = [int(island[2])]
+    island[2] = int(island[2])
 
     graph[i][0] = island[0]
     graph[i][1] = island[1]
-    graph[island[2][0]][2].append(i)
+    graph[island[2]][2].append(i)
 
     i += 1
-dfs(1, 0)
-print(graph[1][1])
+ans = dfs(1)
+print(ans)
