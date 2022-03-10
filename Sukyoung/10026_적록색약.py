@@ -40,7 +40,6 @@ def yes_bfs(s_row,s_col,min,max):  # 적록색약인 사람 bfs
 
     return cnt
 
-
 N = int(input())
 mat = [list(input()) for _ in range(N)]
 dx = [1,0,-1,0]
