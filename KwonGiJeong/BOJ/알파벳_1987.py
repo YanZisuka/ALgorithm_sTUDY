@@ -1,8 +1,3 @@
-import sys
-
-sys.stdin = open('input_1987.txt')
-
-
 def DFS(row, col, cnt):
 
     global alphabets
