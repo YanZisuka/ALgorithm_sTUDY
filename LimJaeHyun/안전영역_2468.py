@@ -43,4 +43,4 @@ for rain in range(1, max_rain):
     safe_zone = []
     visit = [list(False for _ in range(N)) for _ in range(N)]
 
-if set(safe_zone_number)[0]
+print(len(safe_zone_number))
