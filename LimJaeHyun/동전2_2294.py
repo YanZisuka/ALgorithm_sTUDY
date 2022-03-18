@@ -9,7 +9,7 @@ for coin in coin_list:
     for i in range(coin, k + 1):
         memo[i] = min(memo[i - coin] + 1, memo[i])
 
-print(memo[k + 1] if memo[k + 1] != 0 else -1)
+print(memo[k])
 
 # coin_list = list(set(list(int(input()) for _ in range(n))))
 # coin_list.sort()
