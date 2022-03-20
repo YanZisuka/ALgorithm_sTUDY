@@ -1,9 +1,8 @@
+import sys
+input = sys.stdin.readline
 
 def dfs(start_list):
     global result
-
-
-
 
     for i in start_list:
         result.append(i[1])
@@ -33,7 +32,6 @@ def dfs(start_list):
             sum_list.append(sum)
             result.pop()
 
-
 N = int(input())
 information = [[1,'S',0,0]]
 for i in range(2,N+1):
@@ -54,12 +52,8 @@ for i in range(N+1):
             list_.append([info[0],info[2]])
     dict[i] = list_
 
-visited = [False]*(N+1)
-
 result =[]
 sum_list=[]
 dfs(dict[0])
-# answer=[i for i in dfs(dict[1]) if i > 0]
 print(sum(sum_list))
-#print(sum(answer))
 
