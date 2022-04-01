@@ -34,3 +34,4 @@ for tc in range(1, t+1):
             exchange -= 1
             
     print(f'#{tc} {"".join(map(str, num))}')
+    
