@@ -2,7 +2,7 @@ import heapq
 import sys
 input = sys.stdin.readline
 
-def dijkstra(start):
+def dijkstra(start):  # 다익스트라 함수 실행
     final_distance = [float('inf')] * (V + 1)
     queue = []
     heapq.heappush(queue,[0,start])
