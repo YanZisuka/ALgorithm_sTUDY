@@ -24,26 +24,26 @@ def foxDijkstra(s):
 
 
 def wolfDijkstra(s):
-    dist = [[float('inf')] * (n+1) for _ in range(2)]
+    dist = [[float('inf')] * (n+1) for _ in range(2)]  # 0: 해당 노드에 달려서 도달, 1: 해당 노드에 걸어서 도달
     dist[1][s] = 0
     heap = []
     heappush(heap, (0, s, False))
 
     while heap:
-        dt, now, speedy = heappop(heap)
+        dt, now, slow = heappop(heap)
 
-        if speedy and dist[0][now] < dt:
+        if slow and dist[0][now] < dt:
             continue
-        if not speedy and dist[1][now] < dt:
+        if not slow and dist[1][now] < dt:
             continue
         
         for next, weight in graph[now]:
-            if speedy:
+            if slow:
                 shortest = dt + weight * 2
                 if shortest < dist[1][next]:
                     dist[1][next] = shortest
                     heappush(heap, (shortest, next, False))
-            if not speedy:
+            if not slow:
                 shortest = dt + weight / 2
                 if shortest < dist[0][next]:
                     dist[0][next] = shortest
