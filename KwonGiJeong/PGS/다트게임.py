@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def solution(dartResult):
     answer = 0
     items = deque(dartResult)
@@ -9,7 +10,7 @@ def solution(dartResult):
         item = items.popleft()
         if item != 'S' and item != 'D' and item != 'T' and item != '*' and item != '#':
             next_item = items.popleft()
-            if  next_item!= 'S' and next_item != 'D' and next_item != 'T' and next_item != '*' and next_item != '#':
+            if next_item != 'S' and next_item != 'D' and next_item != 'T' and next_item != '*' and next_item != '#':
                 point = int(item + next_item)
             else:
                 point = int(item)
