@@ -24,6 +24,5 @@ def solution(relation):
         case = list(combinations(com_list, i))
         print(case)
 
-    print(result)
     answer = 0
     return answer
