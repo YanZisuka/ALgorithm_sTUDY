@@ -1,18 +1,15 @@
 def solution(str1, str2):
     def compare(table1, table2):
-        inter_charset = set()
-        union_charset = set(list(table1.keys()) + list(table2.keys()))
-        for k in table1.keys():
-            if table2.get(k):
-                inter_charset.add(k)
-        intersection, union = 0, 0
-        for char in inter_charset:
-            intersection += min(int(table1.get(char) if table1.get(char) else 0), int(table2.get(char) if table2.get(char) else 0))
-        for char in union_charset:
-            union += max(int(table1.get(char) if table1.get(char) else 0), int(table2.get(char) if table2.get(char) else 0))
+        inter = set(list(table1.keys())) & set(list(table2.keys()))
+        union = set(list(table1.keys())) | set(list(table2.keys()))
+        inter_num, union_num = 0, 0
+        for char in inter:
+            inter_num += min(int(table1.get(char) if table1.get(char) else 0), int(table2.get(char) if table2.get(char) else 0))
+        for char in union:
+            union_num += max(int(table1.get(char) if table1.get(char) else 0), int(table2.get(char) if table2.get(char) else 0))
 
-        if intersection == 0 and union == 0: return 1
-        return intersection / union
+        if inter_num == 0 and union_num == 0: return 1
+        return inter_num / union_num
 
 
     table1 = {}
